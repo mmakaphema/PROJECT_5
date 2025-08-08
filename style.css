@@ -1,0 +1,39 @@
+table{
+    color:#ffff;
+    text-align:center;
+    border-collapse:collapse;
+    font:normal 3em Aria, Helvetica, sans-serif;
+}
+
+tr{
+    height: 16.02vh;
+    background-color: palevioletred;
+}
+
+td{
+width: 25vw;
+border: 1px solid palevioletred;
+}
+
+#inputBox{
+    background-color:pink;
+    text-align:right;
+    width:100%;
+    font-size:2em;
+    color:#ffff;
+    border: 0px;
+}
+
+.digitButton{
+
+    background-color:palevioletred;
+}
+
+.operatorButton{
+
+    background-color:rgb(224, 30, 121);
+}
+
+.ACButton{
+    background-color:pink;
+}

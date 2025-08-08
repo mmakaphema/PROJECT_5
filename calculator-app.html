@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>CalculatorAPP-week5</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" type="text/css" media="screen" href="style.css" />
+    <script src="main.js"></script>
+  </head>
+  <body>
+    <table border="1">
+      <tr>
+        <td colspan="4">
+          <input type="text" id="inputBox" value="0" />
+        </td>
+      </tr>
+      <!--onclick determines what happens when the user presses the button-->
+      <tr>
+        <td class="digitButton" onclick="pressedDigitButton(7)">7</td>
+        <td class="digitButton" onclick="pressedDigitButton(8)">8</td>
+        <td class="digitButton" onclick="pressedDigitButton(9)">9</td>
+        <td class="operatorButton" onclick="operatorButtonPressed('x')">x</td>
+      </tr>
+
+      <tr>
+        <td class="digitButton" onclick="pressedDigitButton(4)">4</td>
+        <td class="digitButton" onclick="pressedDigitButton(5)">5</td>
+        <td class="digitButton" onclick="pressedDigitButton(6)">6</td>
+        <td class="operatorButton" onclick="operatorButtonPressed('-')">-</td>
+      </tr>
+
+      <tr>
+        <td class="digitButton" onclick="pressedDigitButton(1)">1</td>
+        <td class="digitButton" onclick="pressedDigitButton(2)">2</td>
+        <td class="digitButton" onclick="pressedDigitButton(3)">3</td>
+        <td class="operatorButton" onclick="operatorButtonPressed('+')">+</td>
+      </tr>
+
+      <tr>
+        <td class="digitButton" onclick="pressedDigitButton(0)" colspan="2">0</td>
+
+        <td class="ACButton" onclick="buttonACPressed()">AC</td>
+
+        <td class="operatorButton" onclick="operatorButtonPressed('/')">/</td>
+      </tr>
+
+      <tr>
+        <td class="operatorButton" onclick="equalsButtonPressed()" colspan="4">=</td>
+      </tr>
+    </table>
+
+    <script>
+      // =====================Boolean variable: Determines if the next value the user types should be on a new line.=============================================//
+      var newLine = true;
+      //=============================================================================================================//
+      var value1;
+      var currentOperator;
+      // ====================================Event handler for when any digit is pressed==========================================================================//
+      function pressedDigitButton(button) {
+        if (newLine == true) {
+          document.getElementById("inputBox").value = button;
+          newLine = false;
+        } else {
+          var currentValue = document.getElementById("inputBox").value;
+          document.getElementById("inputBox").value = currentValue + button;
+        }
+      }
+      //=========================================Event handler for when the AC button is pressed====================================================================================== //
+
+      function buttonACPressed() {
+        document.getElementById("inputBox").value = 0;
+        newLine = true;
+      }
+      //=========================================Event handler for when operator buttons are pressed===============================================================//
+      function operatorButtonPressed(operator) {
+        currentOperator = operator;
+        value1 = parseInt(document.getElementById("inputBox").value);
+        newLine = true;
+      }
+      //===============================================Event handler for the equals to button=============================================================================//
+      function equalsButtonPressed() {
+        var value2 = parseInt(document.getElementById("inputBox").value);
+        var finalTotal;
+        //====================================================Operator 1===================================================================================================//
+        switch (currentOperator) {
+          case "+":
+            finalTotal = value1 + value2;
+            break;
+          //==================================================Operator 2==========================================================================================//
+
+          case "-":
+            finalTotal = value1 - value2;
+            break;
+          //=================================================Operator 3============================================================================================//
+
+          case "/":
+            finalTotal = value1 / value2;
+            break;
+          //=================================================Operator 4============================================================================================//
+
+          case "x":
+            finalTotal = value1 * value2;
+            break;
+        }
+
+        document.getElementById("inputBox").value = finalTotal;
+        value1 = 0;
+        newLine = true;
+      }
+    </script>
+  </body>
+</html>
